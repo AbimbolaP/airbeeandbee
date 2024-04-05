@@ -8,7 +8,7 @@ import ListingCard from "./components/listings/ListingCard";
 
 interface HomeProps {
   searchParams: IListingsParams
-}
+};
 
 const Home = async ({searchParams}: HomeProps) => {
   const listings = await getListings(searchParams);
@@ -31,7 +31,7 @@ const Home = async ({searchParams}: HomeProps) => {
         lg:grid-cols-4
         xl:grid-cols-5
         2xl:grid-cols-6
-        gap-6
+        gap-8
       ">
         {listings.map((listing) => {
           return (
