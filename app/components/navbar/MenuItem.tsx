@@ -1,7 +1,7 @@
 'use client';
 
 interface MenuItemProps {
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick: () => void;
   label: string;
 }
 const MenuItem: React.FC<MenuItemProps> = ({onClick, label}) => {
