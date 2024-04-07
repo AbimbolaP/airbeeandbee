@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from "react";
 import { useRouter } from "next/navigation";
 
 import Container from "../components/Container";
@@ -55,6 +56,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
         gap-8
       ">
         {reservations.map((reservation)=> (
+          <Suspense>
           <ListingCard
             key={reservation.id}
             data={reservation.listing}
@@ -65,6 +67,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
             actionLabel="Cancel Reservation"
             currentUser={currentUser}
           />
+          </Suspense>
         ))}
       </div>
     </Container>

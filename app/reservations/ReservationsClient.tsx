@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import {toast} from 'react-hot-toast';
 import axios from "axios";
 import { useCallback, useState } from "react";
@@ -59,6 +60,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
         '
       >
         {reservations.map((reservation) => (
+          <Suspense>
           <ListingCard
             key={reservation.id}
             data={reservation.listing}
@@ -69,9 +71,11 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
             actionLabel="Cancel guesr reservation"
             currentUser={currentUser}
           />
+          </Suspense>
         ))}
       </div>
     </Container>
+    
    );
 }
  

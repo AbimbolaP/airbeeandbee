@@ -1,4 +1,5 @@
 
+import { Suspense } from "react";
 import getCurrentUser from "./actions/getCurrentUser";
 import getListings, { IListingsParams } from "./actions/getListings";
 
@@ -35,15 +36,18 @@ const Home = async ({searchParams}: HomeProps) => {
       ">
         {listings.map((listing) => {
           return (
+            <Suspense>
             <ListingCard
               currentUser={currentUser}
               key={listing.id}
               data={listing}
             />
+            </Suspense>
           )
         })}
       </div>
    </Container>
+   
   );
 }
 

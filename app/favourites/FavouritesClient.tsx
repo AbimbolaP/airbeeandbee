@@ -1,4 +1,4 @@
-
+import { Suspense } from "react";
 
 import Container from "../components/Container";
 import Heading from "../components/Heading";
@@ -34,11 +34,13 @@ const FavouritesClient: React.FC<FavouritesClientProps> = ({
         gap-8
      ">
        {listings.map((listing)=> (
+        <Suspense>
          <ListingCard
            key={listing.id}
            data={listing}
            currentUser={currentUser}
          />
+        </Suspense>
        ))};
       </div>
     </Container>

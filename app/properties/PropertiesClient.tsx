@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from "next/navigation";
+import { Suspense } from "react";
 
 import Container from "../components/Container";
 import Heading from "../components/Heading";
@@ -55,6 +56,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
         gap-8
       ">
         {listings.map((listing)=> (
+          <Suspense>
           <ListingCard
             key={listing.id}
             data={listing}
@@ -64,9 +66,11 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
             actionLabel="Delete Property"
             currentUser={currentUser}
           />
+          </Suspense>
         ))}
       </div>
     </Container>
+    
    );
 }
  
