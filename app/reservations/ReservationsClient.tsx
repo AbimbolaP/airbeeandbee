@@ -59,8 +59,8 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
           gap-8
         '
       >
-        <Suspense>
         {reservations.map((reservation) => (
+          <Suspense key={reservation.id}>
           <ListingCard
             key={reservation.id}
             data={reservation.listing}
@@ -70,9 +70,9 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
             disabled={deletingId === reservation.id}
             actionLabel="Cancel guesr reservation"
             currentUser={currentUser}
-          /> 
+          />
+          </Suspense>
         ))}
-        </Suspense>
       </div>
     </Container>
     

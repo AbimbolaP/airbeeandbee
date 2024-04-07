@@ -33,15 +33,15 @@ const FavouritesClient: React.FC<FavouritesClientProps> = ({
         2xl:grid-cols-6
         gap-8
      ">
-      <Suspense>
        {listings.map((listing)=> (
+        <Suspense key={listing.id}>
          <ListingCard
            key={listing.id}
            data={listing}
            currentUser={currentUser}
-         />      
-       ))}
-       </Suspense>;
+         />
+        </Suspense>
+       ))};
       </div>
     </Container>
    );

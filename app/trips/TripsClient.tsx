@@ -55,8 +55,8 @@ const TripsClient: React.FC<TripsClientProps> = ({
         2xl:grid-cols-6
         gap-8
       ">
-        <Suspense>
         {reservations.map((reservation)=> (
+          <Suspense key={reservation.id}>
           <ListingCard
             key={reservation.id}
             data={reservation.listing}
@@ -66,9 +66,9 @@ const TripsClient: React.FC<TripsClientProps> = ({
             disabled={deletingId === reservation.id}
             actionLabel="Cancel Reservation"
             currentUser={currentUser}
-          /> 
+          />
+          </Suspense>
         ))}
-        </Suspense>
       </div>
     </Container>
    );
