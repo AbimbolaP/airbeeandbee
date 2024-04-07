@@ -55,8 +55,8 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
         2xl:grid-cols-6
         gap-8
       ">
+        <Suspense>
         {listings.map((listing)=> (
-          <Suspense>
           <ListingCard
             key={listing.id}
             data={listing}
@@ -66,8 +66,8 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
             actionLabel="Delete Property"
             currentUser={currentUser}
           />
-          </Suspense>
         ))}
+      </Suspense>
       </div>
     </Container>
     

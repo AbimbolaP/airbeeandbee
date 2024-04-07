@@ -34,17 +34,17 @@ const Home = async ({searchParams}: HomeProps) => {
         2xl:grid-cols-6
         gap-8
       ">
+        <Suspense>
         {listings.map((listing) => {
           return (
-            <Suspense>
             <ListingCard
               currentUser={currentUser}
               key={listing.id}
               data={listing}
             />
-            </Suspense>
           )
         })}
+        </Suspense>
       </div>
    </Container>
    
