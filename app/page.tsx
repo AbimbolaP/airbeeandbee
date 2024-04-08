@@ -22,6 +22,7 @@ const Home = async ({searchParams}: HomeProps) => {
   }
 
   return (
+  <Suspense>
    <Container>
       <div className="
         pt-24
@@ -36,17 +37,16 @@ const Home = async ({searchParams}: HomeProps) => {
       ">
         {listings.map((listing) => {
           return (
-            <Suspense key={listing.id}>
             <ListingCard
               currentUser={currentUser}
               key={listing.id}
               data={listing}
             />
-            </Suspense>
           )
         })}
       </div>
    </Container>
+   </Suspense>
    
   );
 }

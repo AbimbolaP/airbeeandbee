@@ -39,6 +39,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
     })
   }, [router]);
   return ( 
+    <Suspense>
     <Container>
       <Heading
         title="Properties"
@@ -56,7 +57,6 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
         gap-8
       ">
         {listings.map((listing)=> (
-          <Suspense key={listing.id}>
           <ListingCard
             key={listing.id}
             data={listing}
@@ -66,11 +66,10 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
             actionLabel="Delete Property"
             currentUser={currentUser}
           />
-          </Suspense>
         ))}
       </div>
     </Container>
-    
+    </Suspense>
    );
 }
  

@@ -14,7 +14,8 @@ const FavouritesClient: React.FC<FavouritesClientProps> = ({
   listings,
   currentUser,
 }) => {
-  return ( 
+  return (
+    <Suspense> 
     <Container>
       <Heading
         title="Favourites"
@@ -34,16 +35,15 @@ const FavouritesClient: React.FC<FavouritesClientProps> = ({
         gap-8
      ">
        {listings.map((listing)=> (
-        <Suspense key={listing.id}>
          <ListingCard
            key={listing.id}
            data={listing}
            currentUser={currentUser}
          />
-        </Suspense>
        ))};
       </div>
     </Container>
+    </Suspense>
    );
 }
  

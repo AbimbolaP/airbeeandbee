@@ -41,6 +41,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
   },[router]);
 
   return (
+    <Suspense>
     <Container>
       <Heading
         title= "Reservations"
@@ -60,7 +61,6 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
         '
       >
         {reservations.map((reservation) => (
-          <Suspense key={reservation.id}>
           <ListingCard
             key={reservation.id}
             data={reservation.listing}
@@ -71,11 +71,10 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
             actionLabel="Cancel guesr reservation"
             currentUser={currentUser}
           />
-          </Suspense>
         ))}
       </div>
     </Container>
-    
+    </Suspense> 
    );
 }
  
