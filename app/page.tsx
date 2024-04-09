@@ -23,7 +23,7 @@ const Home = async ({searchParams}: HomeProps) => {
   }
 
   return (
-  
+  <Suspense fallback={<Loading/>}>
    <Container>
       <div className="
         pt-24
@@ -36,7 +36,6 @@ const Home = async ({searchParams}: HomeProps) => {
         2xl:grid-cols-6
         gap-8
       ">
-      <Suspense fallback={<Loading/>}>
         {listings.map((listing) => {
           return (
             <ListingCard
@@ -46,10 +45,9 @@ const Home = async ({searchParams}: HomeProps) => {
             />
           )
         })}
-      </Suspense> 
       </div>
    </Container>
-   
+   </Suspense>
   );
 }
 

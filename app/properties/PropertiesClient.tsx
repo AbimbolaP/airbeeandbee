@@ -39,7 +39,8 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
       setDeletingId('')
     })
   }, [router]);
-  return ( 
+  return (
+  <Suspense fallback={<PropertiesPage/>}> 
     <Container>
       <Heading
         title="Properties"
@@ -56,7 +57,6 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
         2xl:grid-cols-6
         gap-8
       ">
-        <Suspense fallback={<PropertiesPage/>}>
         {listings.map((listing)=> (
           <ListingCard
             key={listing.id}
@@ -68,10 +68,9 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
             currentUser={currentUser}
           />
         ))}
-        </Suspense>
       </div>
     </Container>
-    
+    </Suspense>
    );
 }
  

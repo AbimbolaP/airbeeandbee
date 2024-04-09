@@ -17,6 +17,7 @@ const FavouritesClient: React.FC<FavouritesClientProps> = ({
   currentUser,
 }) => {
   return (
+    <Suspense fallback={<ListingPage/>}>
     <Container>
       <Heading
         title="Favourites"
@@ -35,7 +36,6 @@ const FavouritesClient: React.FC<FavouritesClientProps> = ({
         2xl:grid-cols-6
         gap-8
      ">
-      <Suspense fallback={<ListingPage/>}>
        {listings.map((listing)=> (
          <ListingCard
            key={listing.id}
@@ -43,10 +43,9 @@ const FavouritesClient: React.FC<FavouritesClientProps> = ({
            currentUser={currentUser}
          />
        ))};
-       </Suspense>
       </div>
     </Container>
-    
+    </Suspense>
    );
 }
  

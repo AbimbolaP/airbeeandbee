@@ -41,6 +41,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
     })
   }, [router]);
   return ( 
+  <Suspense fallback={<TripsPage/>}>
     <Container>
       <Heading
         title="Trips"
@@ -57,7 +58,6 @@ const TripsClient: React.FC<TripsClientProps> = ({
         2xl:grid-cols-6
         gap-8
       ">
-        <Suspense fallback={<TripsPage/>}>
         {reservations.map((reservation)=> (
           <ListingCard
             key={reservation.id}
@@ -70,9 +70,9 @@ const TripsClient: React.FC<TripsClientProps> = ({
             currentUser={currentUser}
           />
         ))}
-      </Suspense> 
       </div>
     </Container>
+    </Suspense>
    );
 }
  
