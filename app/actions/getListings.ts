@@ -1,4 +1,5 @@
 import prisma from "@/app/libs/prismadb";
+import { isDynamicServerError } from "next/dist/client/components/hooks-server-context";
 
 
 export interface IListingsParams {
@@ -86,6 +87,11 @@ export default async function getListings(
 
     return SafeListings;
   } catch(error: any) {
+    if(isDynamicServerError(error)){
+      throw error;
+    }
+  {
     throw new Error(error);
   }
+}
 }
