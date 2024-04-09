@@ -36,19 +36,17 @@ const Home = async ({searchParams}: HomeProps) => {
         2xl:grid-cols-6
         gap-8
       ">
-        
+      <Suspense fallback={<Loading/>}>
         {listings.map((listing) => {
           return (
-          <Suspense fallback={<Loading/>}>
             <ListingCard
               currentUser={currentUser}
               key={listing.id}
               data={listing}
             />
-            </Suspense>
           )
         })}
-        
+      </Suspense> 
       </div>
    </Container>
    
