@@ -11,6 +11,8 @@ import {SafeReservation, SafeUser } from "../types";
 import Heading from "../components/Heading";
 import Container from "../components/Container";
 import ListingCard from "../components/listings/ListingCard";
+import Loading from '../loading';
+import ReservationsPage from './page';
 
 interface ReservationsClientProps {
   reservations: SafeReservation[];
@@ -41,7 +43,6 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
   },[router]);
 
   return (
-    <Suspense>
     <Container>
       <Heading
         title= "Reservations"
@@ -61,6 +62,7 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
         '
       >
         {reservations.map((reservation) => (
+          <Suspense fallback={<ReservationsPage/>}>
           <ListingCard
             key={reservation.id}
             data={reservation.listing}
@@ -71,10 +73,10 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
             actionLabel="Cancel guesr reservation"
             currentUser={currentUser}
           />
+        </Suspense> 
         ))}
       </div>
     </Container>
-    </Suspense> 
    );
 }
  

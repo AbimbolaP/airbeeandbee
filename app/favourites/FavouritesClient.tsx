@@ -4,6 +4,8 @@ import Container from "../components/Container";
 import Heading from "../components/Heading";
 import ListingCard from "../components/listings/ListingCard";
 import { SafeListing, SafeUser } from "../types";
+import Loading from "../loading";
+import ListingPage from "./page";
 
 interface FavouritesClientProps {
   listings: SafeListing[];
@@ -15,7 +17,6 @@ const FavouritesClient: React.FC<FavouritesClientProps> = ({
   currentUser,
 }) => {
   return (
-    <Suspense> 
     <Container>
       <Heading
         title="Favourites"
@@ -35,15 +36,17 @@ const FavouritesClient: React.FC<FavouritesClientProps> = ({
         gap-8
      ">
        {listings.map((listing)=> (
+         <Suspense fallback={<ListingPage/>}>
          <ListingCard
            key={listing.id}
            data={listing}
            currentUser={currentUser}
          />
+         </Suspense>
        ))};
       </div>
     </Container>
-    </Suspense>
+    
    );
 }
  

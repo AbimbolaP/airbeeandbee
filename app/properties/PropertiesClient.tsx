@@ -11,6 +11,7 @@ import { useCallback, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import ListingCard from "../components/listings/ListingCard";
+import PropertiesPage from "./page";
 
 interface PropertiesClientProps {
   listings: SafeListing[];
@@ -39,7 +40,6 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
     })
   }, [router]);
   return ( 
-    <Suspense>
     <Container>
       <Heading
         title="Properties"
@@ -57,6 +57,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
         gap-8
       ">
         {listings.map((listing)=> (
+          <Suspense fallback={<PropertiesPage/>}>
           <ListingCard
             key={listing.id}
             data={listing}
@@ -66,10 +67,11 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
             actionLabel="Delete Property"
             currentUser={currentUser}
           />
+        </Suspense>
         ))}
       </div>
     </Container>
-    </Suspense>
+    
    );
 }
  

@@ -6,6 +6,7 @@ import getListings, { IListingsParams } from "./actions/getListings";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import ListingCard from "./components/listings/ListingCard";
+import Loading from "./loading";
 
 interface HomeProps {
   searchParams: IListingsParams
@@ -22,7 +23,7 @@ const Home = async ({searchParams}: HomeProps) => {
   }
 
   return (
-  <Suspense>
+  
    <Container>
       <div className="
         pt-24
@@ -35,18 +36,21 @@ const Home = async ({searchParams}: HomeProps) => {
         2xl:grid-cols-6
         gap-8
       ">
+        
         {listings.map((listing) => {
           return (
+          <Suspense fallback={<Loading/>}>
             <ListingCard
               currentUser={currentUser}
               key={listing.id}
               data={listing}
             />
+            </Suspense>
           )
         })}
+        
       </div>
    </Container>
-   </Suspense>
    
   );
 }

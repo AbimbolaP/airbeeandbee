@@ -11,6 +11,8 @@ import { useCallback, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import ListingCard from "../components/listings/ListingCard";
+import Loading from "../loading";
+import TripsPage from "./page";
 
 interface TripsClientProps {
   reservations: SafeReservation[];
@@ -39,7 +41,6 @@ const TripsClient: React.FC<TripsClientProps> = ({
     })
   }, [router]);
   return ( 
-    <Suspense>
     <Container>
       <Heading
         title="Trips"
@@ -57,6 +58,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
         gap-8
       ">
         {reservations.map((reservation)=> (
+          <Suspense fallback={<TripsPage/>}>
           <ListingCard
             key={reservation.id}
             data={reservation.listing}
@@ -66,11 +68,11 @@ const TripsClient: React.FC<TripsClientProps> = ({
             disabled={deletingId === reservation.id}
             actionLabel="Cancel Reservation"
             currentUser={currentUser}
-          /> 
+          />
+          </Suspense> 
         ))}
       </div>
     </Container>
-    </Suspense>
    );
 }
  
