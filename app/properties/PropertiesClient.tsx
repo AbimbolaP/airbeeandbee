@@ -56,8 +56,8 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
         2xl:grid-cols-6
         gap-8
       ">
+        <Suspense fallback={<PropertiesPage/>}>
         {listings.map((listing)=> (
-          <Suspense fallback={<PropertiesPage/>}>
           <ListingCard
             key={listing.id}
             data={listing}
@@ -67,8 +67,8 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
             actionLabel="Delete Property"
             currentUser={currentUser}
           />
-        </Suspense>
         ))}
+        </Suspense>
       </div>
     </Container>
     
