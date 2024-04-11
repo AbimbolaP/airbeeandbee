@@ -1,6 +1,5 @@
 'use client';
 
-import { Suspense } from "react";
 import { useRouter } from "next/navigation";
 
 import Container from "../components/Container";
@@ -41,7 +40,6 @@ const TripsClient: React.FC<TripsClientProps> = ({
     })
   }, [router]);
   return ( 
-  <Suspense fallback={<TripsPage/>}>
     <Container>
       <Heading
         title="Trips"
@@ -72,7 +70,6 @@ const TripsClient: React.FC<TripsClientProps> = ({
         ))}
       </div>
     </Container>
-    </Suspense>
    );
 }
  

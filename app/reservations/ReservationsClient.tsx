@@ -43,7 +43,6 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
   },[router]);
 
   return (
-    <Suspense fallback={<ReservationsPage/>}>
     <Container>
       <Heading
         title= "Reservations"
@@ -76,7 +75,6 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
         ))}
       </div>
     </Container>
-    </Suspense>
    );
 }
  

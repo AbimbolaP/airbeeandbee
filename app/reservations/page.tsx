@@ -3,6 +3,8 @@ import EmptyState from '../components/EmptyState';
 import getCurrentUser from "../actions/getCurrentUser";
 import getReservations from "../actions/getReservations";
 import ReservationsClient from './ReservationsClient';
+import Loading from '../loading';
+import { Suspense } from 'react';
 
 const ReservationsPage = async () => {
   const currentUser = await getCurrentUser();
@@ -17,7 +19,7 @@ const ReservationsPage = async () => {
   }
 
   const reservations = await getReservations({
-    authorId: currentUser.id
+    authorId: currentUser?.id
   });
 
   if (reservations.length === 0) {
@@ -29,10 +31,12 @@ const ReservationsPage = async () => {
     )
   }
   return (
+    <Suspense fallback={<Loading/>}>
     <ReservationsClient
       reservations={reservations}
       currentUser={currentUser}
     />
+    </Suspense>
   )
 };
 

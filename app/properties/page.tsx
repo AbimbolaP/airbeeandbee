@@ -3,6 +3,8 @@ import PropertiesClient from "./PropertiesClient";
 
 import getCurrentUser from "../actions/getCurrentUser";
 import getListings from "../actions/getListings";
+import { Suspense } from "react";
+import Loading from "../loading";
 
 
 const PropertiesPage = async () => {
@@ -18,7 +20,7 @@ const PropertiesPage = async () => {
   }
 
   const listings = await getListings({
-    userId: currentUser.id
+    userId: currentUser?.id
   });
 
   if (listings.length === 0) {
@@ -30,10 +32,12 @@ const PropertiesPage = async () => {
     )
   }
   return (
+    <Suspense fallback={<Loading/>}>
     <PropertiesClient
       listings={listings}
       currentUser={currentUser}
     />
+    </Suspense>
   )
 
 }

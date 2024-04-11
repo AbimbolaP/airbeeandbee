@@ -1,4 +1,5 @@
 import prisma from '@/app/libs/prismadb';
+import { isDynamicServerError } from "next/dist/client/components/hooks-server-context";
 
 interface IParams {
   listingId?: string;
@@ -35,6 +36,11 @@ export default async function getListingById(
       }
     };
   }catch (error: any) {
+    if(isDynamicServerError(error)){
+      throw error;
+    }
+  {
     throw new Error(error);
+  }
   }
 }

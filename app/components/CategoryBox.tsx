@@ -19,8 +19,7 @@ const CategoryBox:React.FC<CategoryBoxProps> = (
     selected
   }
 ) => {
-  const router =useRouter
-  ();
+  const router =useRouter();
   const params = useSearchParams();
   const handleClick = useCallback(() =>{
     let currentQuery ={};

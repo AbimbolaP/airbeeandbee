@@ -9,6 +9,8 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { FaSkiing } from "react-icons/fa";
 import { BsSnow } from "react-icons/bs";
 import { IoDiamond } from "react-icons/io5";
+import { Suspense } from "react";
+import Loading from "@/app/loading";
 
 export const categories =[
   {
@@ -99,6 +101,7 @@ const Categories = () => {
     return null;
   }
   return ( 
+    <Suspense fallback={<div><Loading/></div>}>
     <Container>
       <div
       className="
@@ -119,6 +122,7 @@ const Categories = () => {
         ))}
       </div>
     </Container>
+    </Suspense>
    );
 }
  

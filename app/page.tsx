@@ -23,8 +23,8 @@ const Home = async ({searchParams}: HomeProps) => {
   }
 
   return (
-  <Suspense fallback={<Loading/>}>
    <Container>
+    <Suspense fallback={<Loading/>}>
       <div className="
         pt-24
         grid
@@ -46,8 +46,8 @@ const Home = async ({searchParams}: HomeProps) => {
           )
         })}
       </div>
+      </Suspense>
    </Container>
-   </Suspense>
   );
 }
 

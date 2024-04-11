@@ -40,7 +40,6 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
     })
   }, [router]);
   return (
-  <Suspense fallback={<PropertiesPage/>}> 
     <Container>
       <Heading
         title="Properties"
@@ -70,7 +69,6 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
         ))}
       </div>
     </Container>
-    </Suspense>
    );
 }
  

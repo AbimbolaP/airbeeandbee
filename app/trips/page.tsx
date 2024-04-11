@@ -3,6 +3,8 @@ import TripsClient from "./TripsClient";
 
 import getCurrentUser from "../actions/getCurrentUser";
 import getReservations from "../actions/getReservations";
+import { Suspense } from "react";
+import Loading from "../loading";
 
 
 const TripsPage = async () => {
@@ -18,7 +20,7 @@ const TripsPage = async () => {
   }
 
   const reservations = await getReservations({
-    userId: currentUser.id
+    userId: currentUser?.id
   });
 
   if (reservations.length === 0) {
@@ -30,10 +32,12 @@ const TripsPage = async () => {
     )
   }
   return (
+    <Suspense fallback={<Loading/>}>
     <TripsClient
       reservations={reservations}
       currentUser={currentUser}
     />
+    </Suspense>
   )
 
 }

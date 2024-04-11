@@ -17,7 +17,6 @@ const FavouritesClient: React.FC<FavouritesClientProps> = ({
   currentUser,
 }) => {
   return (
-    <Suspense fallback={<ListingPage/>}>
     <Container>
       <Heading
         title="Favourites"
@@ -45,7 +44,6 @@ const FavouritesClient: React.FC<FavouritesClientProps> = ({
        ))};
       </div>
     </Container>
-    </Suspense>
    );
 }
  
